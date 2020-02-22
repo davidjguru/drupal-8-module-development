@@ -2,6 +2,35 @@ hello_world.hello:
   path: '/hello'
   defaults:
     _controller: '\Drupal\hello_world\Controller\HelloWorldController::helloWorld'
-    _title: 'Out First Route'
+    _title: 'Our First Route'
   requirements:
     _permission: 'access content'
+
+hello_world.hello_name:
+  path: '/hello/{name}'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::helloName'
+    _title: 'Our Second Route now with Name'
+  requirements:
+    _permission: 'access content'
+    name: '[a-zA-Z]+'
+
+hello_world.hello_user:
+  path: '/hello/{user}'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::helloUser'
+    _title: 'Our Third Route salute to the current User'
+  requirements:
+    _access: 'TRUE'
+    user: '\d+'
+
+hello_world.hello_name_default:
+  path: '/hello_default/{name}'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::helloNameDefault'
+    name: 'Richard Gere'
+    _title: 'Our Fourth Route now with default Name'
+  requirements:
+    _permission: 'access content'
+    name: '[a-zA-Z]+'
+
