@@ -16,3 +16,17 @@ function hello_world_help($route_name, RouteMatchInterface $route_match){
     default:
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function hello_world_theme() {
+  return [
+    'hello_world_salutation_block' => [
+      'variables' => [
+        'content' => NULL
+      ],
+      'render element' => 'children',
+    ],
+  ];
+}
