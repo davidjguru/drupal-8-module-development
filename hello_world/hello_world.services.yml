@@ -3,4 +3,9 @@ services:
     class: 'Drupal\hello_world\HelloWorldSalutation'
     arguments: ['@config.factory']
     tags:
-      - {name: salutation}
+      - { name: salutation }
+  hello_world.redirect_subscriber:
+    class: '\Drupal\hello_world\EventSubscriber\HelloWorldRedirectSubscriber'
+    arguments: ['@current_user']
+    tags:
+      - { name: event_subscriber }
