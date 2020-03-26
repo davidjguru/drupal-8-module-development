@@ -32,7 +32,7 @@ class HelloWorldRedirectSubscriber implements EventSubscriberInterface {
    * HelloWorldRedirectSubscriber constructor.
    *
    * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
-   * @param CurrentRouteMatch $currentRouteMatch
+   * @param \Drupal\Core\Routing\CurrentRouteMatch $currentRouteMatch
    */
   public function __construct(AccountProxyInterface $currentUser, CurrentRouteMatch $currentRouteMatch) {
     $this->currentUser = $currentUser;
