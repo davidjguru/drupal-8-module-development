@@ -6,6 +6,6 @@ services:
       - { name: salutation }
   hello_world.redirect_subscriber:
     class: '\Drupal\hello_world\EventSubscriber\HelloWorldRedirectSubscriber'
-    arguments: ['@current_user']
+    arguments: ['@current_user', '@current_route_match']
     tags:
       - { name: event_subscriber }
