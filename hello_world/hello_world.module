@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
- *  Implements hook_help().
+ * Implements hook_help().
  */
-function hello_world_help($route_name, RouteMatchInterface $route_match){
-  switch ($route_name){
+function hello_world_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
     case 'help.page.hello_world':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
@@ -24,9 +28,23 @@ function hello_world_theme() {
   return [
     'hello_world_salutation_block' => [
       'variables' => [
-        'content' => NULL
+        'content' => NULL,
       ],
       'render element' => 'children',
     ],
   ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function hello_world_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'hello_world_log':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('There is an error on your website');
+      $message['body'][] = $params['message'];
+
+      break;
+  }
 }

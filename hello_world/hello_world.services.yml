@@ -12,3 +12,9 @@ services:
   hello_world.logger.channel.hello_world:
     parent: logger.channel_base
     arguments: ['hello_world']
+  hello_world.logger.hello_world:
+    class: \Drupal\hello_world\Logger\MailLogger
+    tags:
+      - { name: logger }
+    arguments:
+      ['@logger.log_message_parser', '@config.factory']
